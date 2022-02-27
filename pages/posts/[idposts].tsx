@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import NextNProgress from 'nextjs-progressbar'
 import { useEffect, useState } from 'react'
 import Footer from '../../component/Footer'
 import Post from '../../component/Post'
@@ -14,7 +15,32 @@ type post = {
   body?: string[] | any
   _id?: string
 }
-const Posts: NextPage<{ posts: post[] }> = ({ posts }) => {
+
+const Posts: NextPage<{ posts: post[] }> = ({ posts: serverPost }) => {
+  const [posts, setPosts] = useState(serverPost)
+  useEffect(() => {
+    async function load() {
+      fetch(`https://warm-hollows-19814.herokuapp.com/posts/getAll`)
+        .then((response) => response.json())
+        .then((posts) => setPosts(posts))
+    }
+    if (!serverPost) {
+      load()
+    }
+  })
+  if (!posts) {
+    return (
+      <>
+        <NextNProgress
+          color="#29D"
+          startPosition={0.3}
+          stopDelayMs={200}
+          height={3}
+          showOnShallow={true}
+        />
+      </>
+    )
+  }
   return (
     <>
       <Head>
@@ -35,12 +61,16 @@ const Posts: NextPage<{ posts: post[] }> = ({ posts }) => {
     </>
   )
 }
+Posts.getInitialProps = async (req) => {
+  if (!req) {
+    return { posts: null }
+  }
 
-Posts.getInitialProps = async () => {
-  const res = await fetch(`https://warm-hollows-19814.herokuapp.com/getAll`)
+  const res = await fetch(
+    `https://warm-hollows-19814.herokuapp.com/posts/getAll`
+  )
   const posts = await res.json()
 
   return { posts }
 }
-
 export default Posts
