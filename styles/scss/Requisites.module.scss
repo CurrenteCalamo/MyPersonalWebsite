@@ -1,0 +1,39 @@
+@import '_mixins';
+
+.RequisitesWrapper {
+  @include wrapper();
+}
+.Contener {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 15%;
+}
+.ContenerFirst {
+  h2 {
+    margin: 0;
+  }
+  a {
+    text-decoration: none;
+    color: aliceblue;
+  }
+}
+.ContenerSecond {
+  width: 220px;
+  height: 330px;
+  background: no-repeat url(../../public/image/220x330.jpeg);
+}
+
+.ContenerNav {
+  margin-top: 1%;
+}
+.ContenerTitle {
+  border-bottom: 1px solid aliceblue;
+}
+@media screen and (max-width: 650px) {
+  .Contener {
+    flex-direction: column;
+    align-items: center;
+  }
+}

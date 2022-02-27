@@ -1,0 +1,11 @@
+@import '_mixins';
+
+.PostsWrapper {
+  @include wrapper();
+  h1 {
+    font-family: EBGaramond;
+  }
+}
+.PostsContener {
+  height: 80%;
+}
