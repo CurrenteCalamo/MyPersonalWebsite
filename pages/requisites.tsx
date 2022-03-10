@@ -26,7 +26,7 @@ const Requisites: NextPage = () => {
                 </Link>
               </div>
               <div>
-                <Link href="https://github.com/AbIgneIgnem">
+                <Link href="https://twitter">
                   <a>Twitter @CurrenteCalamo</a>
                 </Link>
               </div>

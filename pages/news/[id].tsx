@@ -40,6 +40,7 @@ const News: NextPage<{ post: post }> = ({ post: serverPost }) => {
           height={3}
           showOnShallow={true}
         />
+        <h1>Loading...</h1>
       </>
     )
   }
