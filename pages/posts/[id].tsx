@@ -14,7 +14,7 @@ const Posts: NextPage<PostsProps> = ({ posts: serverPost }) => {
 
   useEffect(() => {
     async function load() {
-      fetch(`https://warm-hollows-19814.herokuapp.com/posts/getAll`)
+      fetch(`${process.env.GETALL}`)
         .then((response) => response.json())
         .then((posts) => setPosts(posts))
     }
@@ -24,16 +24,14 @@ const Posts: NextPage<PostsProps> = ({ posts: serverPost }) => {
   })
   if (!posts) {
     return (
-      <>
-        <div className="wrapperloader">
-          <div className="lds-ellipsis">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
+      <div className="wrapperloader">
+        <div className="lds-ellipsis">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
         </div>
-      </>
+      </div>
     )
   }
   return (
@@ -62,9 +60,7 @@ Posts.getInitialProps = async (req) => {
   if (!req) {
     return { posts: null }
   }
-  const res = await fetch(
-    `https://warm-hollows-19814.herokuapp.com/posts/getAll`
-  )
+  const res = await fetch(`${process.env.GETALL}`)
   const posts = await res.json()
 
   return { posts }

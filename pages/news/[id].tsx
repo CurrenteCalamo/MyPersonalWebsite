@@ -14,7 +14,7 @@ const News: NextPage<PostProps> = ({ post: serverPost }) => {
   const [post, setPosts] = useState(serverPost)
   useEffect(() => {
     async function load() {
-      fetch(`https://warm-hollows-19814.herokuapp.com/posts/${router.query.id}`)
+      fetch(`${process.env.POSTS}${router.query.id}`)
         .then((response) => response.json())
         .then((post) => setPosts(post))
     }
@@ -63,9 +63,7 @@ News.getInitialProps = async (req) => {
     return { post: null }
   }
 
-  const res = await fetch(
-    `https://warm-hollows-19814.herokuapp.com/posts/${req.query.id}`
-  )
+  const res = await fetch(`${process.env.POSTS}${req.query.id}`)
   const post = await res.json()
 
   return { post }
