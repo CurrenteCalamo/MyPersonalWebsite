@@ -1,7 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Footer from '../component/Footer'
-
+import Footer from '../components/Footer'
 import styles from '../styles/scss/Home.module.scss'
 import Link from 'next/link'
 
@@ -21,10 +20,10 @@ const Home: NextPage = () => {
             <a> publications</a>
           </Link>
           . Also the experience of using various types of modern software
-          technologies created by leading experts in these areas.It is planned
-          to post detailed contact information.The project is currently under
-          development. The information is not provided in full.If you want to
-          participate, my details are at the
+          technologies created by leading experts in these areas. It is planned
+          to post detailed contact information. The project is currently under
+          development. If you want to participate in the development of a
+          non-commercial project, my details are at the
           <Link href="/requisites">
             <a> requisites</a>
           </Link>

@@ -1,28 +1,20 @@
 import { NextPage } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import NextNProgress from 'nextjs-progressbar'
 import { useEffect, useState } from 'react'
-import Footer from '../../component/Footer'
+import Footer from '../../components/Footer'
 import styles from '../../styles/scss/News.module.scss'
-type post = {
-  name?: string
-  title?: string
-  date?: string
-  creator?: string
-  image?: string
-  body?: string[] | any
-  _id?: string
-}
+import { IPost } from '../../types/post'
 
-const News: NextPage<{ post: post }> = ({ post: serverPost }) => {
+interface PostProps {
+  post: IPost
+}
+const News: NextPage<PostProps> = ({ post: serverPost }) => {
   const router = useRouter()
   const [post, setPosts] = useState(serverPost)
   useEffect(() => {
     async function load() {
-      fetch(
-        `https://warm-hollows-19814.herokuapp.com/posts/getAll${router.query.id}`
-      )
+      fetch(`https://warm-hollows-19814.herokuapp.com/posts/${router.query.id}`)
         .then((response) => response.json())
         .then((post) => setPosts(post))
     }
@@ -32,16 +24,14 @@ const News: NextPage<{ post: post }> = ({ post: serverPost }) => {
   })
   if (!post) {
     return (
-      <>
-        <NextNProgress
-          color="#29D"
-          startPosition={0.3}
-          stopDelayMs={200}
-          height={3}
-          showOnShallow={true}
-        />
-        <h1>Loading...</h1>
-      </>
+      <div className="wrapperloader">
+        <div className="lds-ellipsis">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
     )
   }
   return (
@@ -51,18 +41,16 @@ const News: NextPage<{ post: post }> = ({ post: serverPost }) => {
       </Head>
 
       <div className={styles.NewsWrapper}>
-        <div className="content">
-          <div className="content-text">
-            <h1>{post.title}</h1>
-            {post.body.map((body: string, iter: string) => (
-              <p key={iter}>{body}</p>
-            ))}
-            <div>
-              {post.creator} {post.date}
-            </div>
-
-            <div className={styles.PostImage}></div>
+        <div className={styles.Content}>
+          <h1>{post.title}</h1>
+          {post.body.map((body: string, i: number) => (
+            <p key={i}>{body}</p>
+          ))}
+          <div>
+            {post.creator} {post.date}
           </div>
+
+          <div className={styles.PostImage}></div>
         </div>
 
         <Footer></Footer>

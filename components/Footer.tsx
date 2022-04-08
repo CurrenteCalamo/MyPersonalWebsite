@@ -1,6 +1,6 @@
 import { NextPage } from 'next'
 import Link from 'next/link'
-import styles from '../styles/scss/ComponentStyles/Footer.module.scss'
+import styles from '../styles/scss/Components/Footer.module.scss'
 
 const Footer: NextPage = () => {
   return (
@@ -10,7 +10,7 @@ const Footer: NextPage = () => {
         <div className={styles.rgb}>
           <Link href="/requisites">
             <a>
-              <div className={styles.FooterImageFirst}></div>
+              <div className={styles.FooterImage}></div>
             </a>
           </Link>
         </div>

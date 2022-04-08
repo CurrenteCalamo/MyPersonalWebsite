@@ -1,17 +1,13 @@
 import type { NextPage } from 'next'
 import Link from 'next/link'
-import styles from '../styles/scss/ComponentStyles/Post.module.scss'
-type post = {
-  name?: string
-  title?: string
-  date?: string
-  creator?: string
-  image?: string
-  body?: string[]
-  _id?: string
+import styles from '../styles/scss/Components/Post.module.scss'
+import { IPost } from '../types/post'
+
+interface PostProps {
+  post: IPost
 }
 
-const Post: NextPage<{ post: post }> = ({ post }) => {
+const Post: NextPage<PostProps> = ({ post }) => {
   return (
     <>
       <div key={post._id} className={styles.PostWrapper}>

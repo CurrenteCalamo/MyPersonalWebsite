@@ -1,16 +1,17 @@
 import type { NextPage } from 'next'
-import Error from '../component/Error'
+import FunnyCat from '../components/FunnyCat'
 import Head from 'next/head'
-const Errors: NextPage = () => {
+import styles from '../styles/scss/Error.module.scss'
+const Error: NextPage = () => {
   return (
     <>
       <Head>
         <title>This page could not befound</title>
       </Head>
-
-      <Error></Error>
+      <FunnyCat></FunnyCat>
+      <div className={styles.ErrorWrapper}>This page not be found.</div>
     </>
   )
 }
 
-export default Errors
+export default Error

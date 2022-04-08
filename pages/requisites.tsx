@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Footer from '../component/Footer'
+import Footer from '../components/Footer'
 import styles from '../styles/scss/Requisites.module.scss'
 import Link from 'next/link'
 
@@ -19,10 +19,9 @@ const Requisites: NextPage = () => {
             </div>
             <div className={styles.ContenerNav}>
               <div>Mail pppp43777@gmail.com</div>
-              <div>Phone 8(943)894-84-48</div>
               <div>
-                <Link href="https://github.com/AbIgneIgnem">
-                  <a>Github AbIgneAbIgnem </a>
+                <Link href="https://github.com/CurrenteCalamo">
+                  <a>Github CurrenteCalamo </a>
                 </Link>
               </div>
               <div>

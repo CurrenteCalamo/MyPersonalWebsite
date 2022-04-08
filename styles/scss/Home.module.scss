@@ -11,3 +11,8 @@
 .HomeWrapper {
   @include wrapper();
 }
+@media screen and (max-width: 650px) {
+  .HomeContener {
+    margin-bottom: 15%;
+  }
+}

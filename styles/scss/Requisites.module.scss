@@ -14,11 +14,14 @@
   h2 {
     margin: 0;
   }
+}
+.ContenerNav {
   a {
     text-decoration: none;
     color: aliceblue;
   }
 }
+
 .ContenerSecond {
   width: 220px;
   height: 330px;
@@ -35,5 +38,8 @@
   .Contener {
     flex-direction: column;
     align-items: center;
+  }
+  .ContenerSecond {
+    margin-top: 6%;
   }
 }

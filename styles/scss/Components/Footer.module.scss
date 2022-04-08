@@ -19,15 +19,11 @@
   width: 80%;
   margin-top: 1%;
 }
-.FooterImageFirst {
+.FooterImage {
   @include Image();
   background: url(../../../public/image/footerImage1.png);
 }
 
-.FooterImageSecond {
-  @include Image();
-  background: url(../../../public/image/footerImage2.png);
-}
 .rgb {
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;

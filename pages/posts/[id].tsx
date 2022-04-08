@@ -1,23 +1,17 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import NextNProgress from 'nextjs-progressbar'
 import { useEffect, useState } from 'react'
-import Footer from '../../component/Footer'
-import Post from '../../component/Post'
+import Footer from '../../components/Footer'
+import Post from '../../components/Post'
 import styles from '../../styles/scss/Posts.module.scss'
+import { IPost } from '../../types/post'
 
-type post = {
-  name?: string
-  title?: string
-  date?: string
-  creator?: string
-  image?: string
-  body?: string[] | any
-  _id?: string
+interface PostsProps {
+  posts: IPost[]
 }
-
-const Posts: NextPage<{ posts: post[] }> = ({ posts: serverPost }) => {
+const Posts: NextPage<PostsProps> = ({ posts: serverPost }) => {
   const [posts, setPosts] = useState(serverPost)
+
   useEffect(() => {
     async function load() {
       fetch(`https://warm-hollows-19814.herokuapp.com/posts/getAll`)
@@ -31,13 +25,14 @@ const Posts: NextPage<{ posts: post[] }> = ({ posts: serverPost }) => {
   if (!posts) {
     return (
       <>
-        <NextNProgress
-          color="#29D"
-          startPosition={0.3}
-          stopDelayMs={200}
-          height={3}
-          showOnShallow={true}
-        />
+        <div className="wrapperloader">
+          <div className="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
       </>
     )
   }
@@ -49,11 +44,13 @@ const Posts: NextPage<{ posts: post[] }> = ({ posts: serverPost }) => {
       </Head>
 
       <div className={styles.PostsWrapper}>
-        <h1>Posts</h1>
-        <div className={styles.PostsContener}>
-          {posts.map((req: post) => (
-            <Post key={req._id} post={req}></Post>
-          ))}
+        <div>
+          <h1>Posts</h1>
+          <div className={styles.PostsContener}>
+            {posts.map((req) => (
+              <Post key={req._id} post={req}></Post>
+            ))}
+          </div>
         </div>
 
         <Footer></Footer>
@@ -65,7 +62,6 @@ Posts.getInitialProps = async (req) => {
   if (!req) {
     return { posts: null }
   }
-
   const res = await fetch(
     `https://warm-hollows-19814.herokuapp.com/posts/getAll`
   )

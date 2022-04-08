@@ -1,7 +1,8 @@
 {
   "name": "currente",
-  "version": "0.1.0",
+  "version": "0.9.5",
   "private": true,
+  "author": "CurrenteCalamo",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

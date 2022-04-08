@@ -3,3 +3,8 @@
 .NewsWrapper {
   @include wrapper();
 }
+@media screen and (max-width: 650px) {
+  .Content {
+    margin-bottom: 15%;
+  }
+}
