@@ -1,7 +1,7 @@
 # MyPersonalWebsite
  The objective of the project is to help specialists in various fields           to get more information about technologies. The site provides for the creation of a detailed scientific base, including scientific articles and publications
 
-## Example on herokuapp
+## Example
  [currentecalamo.com](https://currentecalamo.herokuapp.com)
 ## Installation
 
