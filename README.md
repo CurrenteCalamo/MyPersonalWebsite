@@ -11,7 +11,7 @@ $ npm install
 ## Running the app
 
 ```bash
-# run the server
+
 $ npm run dev
 ```
 
